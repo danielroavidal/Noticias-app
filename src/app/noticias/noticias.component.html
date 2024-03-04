@@ -1,0 +1,42 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">Noticias</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de noticias TECH</h5>
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/noticias/form']">
+        Crear Cliente
+      </button>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Título</th>
+                    <th>Descripcion</th>
+                    <th>Resumen</th>
+                    <th type="{{ variable | date }}">Fecha</th>
+                    <th>
+                        editar
+                    </th>
+                    <th>eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let noticia of noticias">
+                    <td>{{ noticia.id }}</td>
+                    <td>{{ noticia.nombre }}</td>
+                    <td>{{ noticia.apellido }}</td>
+                    <td>{{ noticia.email }}</td>
+                    <td>{{ noticia.createAt }}</td>
+                    <td>
+                        <button type="button" name="editar" [routerLink]="['/noticias/form', noticia.id]" class="btn btn-primary btn-sm">editar</button>
+                    </td>
+                    <td>
+                        <button type="button" name="eliminar" (click)='delete(noticia)' class="btn btn-danger btn-sm">eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
